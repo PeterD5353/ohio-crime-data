@@ -35,17 +35,11 @@ variable "storage_class" {
 
 variable "dataproc_cluster_name" {
   description = "Name of the Dataproc Cluster"
-  default = "pipeline_cluster"
+  type = string
 }
 
 variable "cluster_machine_type" {
    description = "Machine type for Dataproc Cluster"
     default = "n1-standard-2"
 }
-
-output "dataproc_cluster_name" {
-  value = var.dataproc_cluster_name
-} 
-
-
 
