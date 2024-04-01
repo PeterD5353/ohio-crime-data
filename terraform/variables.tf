@@ -1,11 +1,11 @@
 variable "credentials" {
   description = "GCP Service Account Credentials"
-  default="" # fill in with the path to your credentials json file
+  type = string
 }
 
 variable "project_id" {
     description = "GCP Project ID"
-    default = "" # add your gcp project ID
+    type = string
 }
 
 variable "region" {
@@ -25,7 +25,7 @@ variable "dataset_id" {
 
 variable "bucket_name" {
   description = "GCS Bucket Name"
-  default = "" # add your globally unique GCS Bucket name 
+  type = string
 }
 
 variable "storage_class" {
@@ -43,16 +43,3 @@ variable "cluster_machine_type" {
     default = "n1-standard-2"
 }
 
-
-
-output "project_id_output" {
-  value = var.project_id
-}
-
-output "bucket_name_output" {
-  value = var.bucket_name
-}
-
-output "credentials_output" {
-  value = var.credentials
-}
