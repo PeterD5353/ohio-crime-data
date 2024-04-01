@@ -43,9 +43,9 @@ variable "cluster_machine_type" {
     default = "n1-standard-2"
 }
 
-output "spark_master_url" {
-  value = "spark://${google_dataproc_cluster.pipeline_cluster.master[0].internal_ip}:7077"
-}
+output "dataproc_cluster_name" {
+  value = var.dataproc_cluster_name
+} 
 
 
 
