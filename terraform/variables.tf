@@ -42,3 +42,17 @@ variable "cluster_machine_type" {
    description = "Machine type for Dataproc Cluster"
     default = "n1-standard-2"
 }
+
+
+
+output "project_id_output" {
+  value = var.project_id
+}
+
+output "bucket_name_output" {
+  value = var.bucket_name
+}
+
+output "credentials_output" {
+  value = var.credentials
+}
