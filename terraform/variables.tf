@@ -35,11 +35,17 @@ variable "storage_class" {
 
 variable "dataproc_cluster_name" {
   description = "Name of the Dataproc Cluster"
-  default = "pipeline-cluster"
+  default = "pipeline_cluster"
 }
 
 variable "cluster_machine_type" {
    description = "Machine type for Dataproc Cluster"
     default = "n1-standard-2"
 }
+
+output "spark_master_url" {
+  value = "spark://${google_dataproc_cluster.pipeline_cluster.master[0].internal_ip}:7077"
+}
+
+
 
