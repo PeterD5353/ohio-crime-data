@@ -4,13 +4,17 @@ services:
     image: mageai/mageai:latest
     command: mage start ${PROJECT_NAME}
     env_file:
-      - .env
+      - ../ohio-crime-data/.env
     build:
       context: .
       dockerfile: Dockerfile
     environment:
       USER_CODE_PATH: /home/src/${PROJECT_NAME}
       ENV: ${ENV}
+      GOOGLE_APPLICATION_CREDENTIALS: ${TF_VAR_credentials}
+      PROJECT_ID: ${TF_VAR_project_id}
+      BUCKET_NAME: ${TF_VAR_bucket_name}
+      CLUSTER_NAME: ${TF_VAR_dataproc_cluster_name}
     ports:
       - 6789:6789
     volumes:
