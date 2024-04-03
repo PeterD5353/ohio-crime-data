@@ -5,8 +5,8 @@ from pyspark.sql.types import IntegerType
 
 TABLE_NAME = "cincinnati_data"
 DATASET_NAME = "ohio_crime_data"
-PROJECT_NAME = os.environ.get("PROJECT_NAME")
-BUCKET_NAME = os.environ.get("TF_VAR_bucket_name")
+PROJECT_NAME = spark.sparkContext.getConf().get("spark.env.PROJECT_NAME")
+BUCKET_NAME = spark.sparkContext.getConf().get("spark.env.TF_VAR_bucket_name")
 path = "gs://{}/cincinnati_crime_data".format(BUCKET_NAME)
 
 spark = SparkSession.builder \
