@@ -17,6 +17,7 @@ With populations of mid-sized cities swelling due to housing affordability chall
 ![finalpipeline](https://github.com/PeterD5353/ohio-crime-data/assets/58152012/77c28ceb-4f49-4e47-a6d0-cd7ac11ded1d)
 
 ## Dashboard
+![dashboard](https://github.com/PeterD5353/ohio-crime-data/assets/58152012/6362a992-ec7c-4c18-9b6d-2cb31ef90393)
 
 
 ## Reproducing this Project
