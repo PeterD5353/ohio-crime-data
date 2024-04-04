@@ -27,7 +27,7 @@ violent_df = parq_df.withColumn('VIOLENT', encode_violent_udf('UCR_GROUP'))
 
 output_df = violent_df
 
-date_columns = ['DATE_REPORTED', 'DATE_FROM', 'DATE_OF_CLEARANCE', 'REPORTED_DATE']
+date_columns = ['REPORTED_DATE']
 
 for column in date_columns: 
   output_df = output_df.withColumn(column, to_date(col(column), 'yyyy-MM-dd'))
@@ -43,6 +43,7 @@ write_options = {
     }}
 
 output_df.write.format("bigquery") \
+    .option("temporaryGcsBucket", BUCKET_NAME) \
     .option("table", write_options["table"]) \
     .option("project", write_options["project"]) \
     .option("dataset", write_options["dataset"]) \
