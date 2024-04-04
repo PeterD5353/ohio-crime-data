@@ -21,4 +21,52 @@ With populations of mid-sized cities swelling due to housing affordability chall
 
 
 ## Reproducing this Project
+### Prerequisites 
+* [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
+* [Terraform](https://developer.hashicorp.com/terraform/install)
 
+### Steps to Reproduce
+* Create a new project in GCP
+* Enable Google Cloud Storage, BigQuery, and Dataproc APIs
+* Clone this repo
+* Create a service account with the following roles: Storage Admin, Storage Object Admin, BigQuery Data Editor, Dataproc Editor, Dataproc Worker, and Service Account User
+* Create a json key for the service account and upload that key into the mage directory
+* Run the following to set your credentials and verify authentication
+```
+export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.json"
+```
+* Copy dev.env to .env and remove dev.env
+```
+cp dev.env .env && rm dev.env
+```
+* Fill in .env with your information and run the following to set environment variables
+```
+source .env
+```
+* Change to the terraform directory and create the infrastructure
+```
+cd terraform
+terraform init
+terraform apply
+```
+* Change to the mage directory and start the mage docker compose
+```
+cd ../mage
+docker compose up
+```
+* Fill in the io_config.yaml with your credentials
+* Navigate to the cincinnati_api_to_gcs pipeline and run it
+* Copy the pyspark file to your bucket
+```
+gsutil cp pyspark_gcs_to_bq.py gs://<your_bucket_name>
+```
+* Submit the job to dataproc
+```
+gcloud dataproc jobs submit pyspark \
+    gs://<>your_bucket_name/pyspark_gcs_to_bq.py \
+    --cluster=<YOUR_CLUSTER_NAME> \
+    --region=<YOUR_REGION> \
+    --project=<YOUR_PROJECT_ID> \
+    --properties=spark.env.PROJECT_NAME=<your_project_id>,spark.env.TF_VAR_bucket_name=<your_bucket_name>
+```
+* load Looker Studio and select the BigQuery Cincinnati crime table as your data source
