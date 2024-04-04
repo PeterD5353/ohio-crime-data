@@ -1,5 +1,5 @@
 version: 0.1.1
 default:
-  GOOGLE_SERVICE_ACC_KEY_FILEPATH: "/home/src/<>" # fill in with the path to your credentials json
+  GOOGLE_SERVICE_ACC_KEY_FILEPATH: "/home/src/ohio-crime-data-project-3c5c73fae390.json" # fill in with the path to your credentials json
 
   
