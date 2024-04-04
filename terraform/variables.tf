@@ -43,3 +43,6 @@ variable "cluster_machine_type" {
     default = "n1-standard-2"
 }
 
+variable "service_account" {
+  description = "Service Account ID"
+}
