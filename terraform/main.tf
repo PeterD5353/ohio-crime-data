@@ -29,15 +29,19 @@ resource "google_bigquery_dataset" "data-warehouse" {
 resource "google_dataproc_cluster" "pyspark-cluster" {
   name = var.dataproc_cluster_name
   region = var.region
-
+  
   cluster_config {
     master_config {
       num_instances = 1
       machine_type = var.cluster_machine_type
+      
     }
     worker_config {
       num_instances = 2
       machine_type = var.cluster_machine_type
+    }
+    gce_cluster_config {
+      service_account = var.service_account
     }
   }
 }
