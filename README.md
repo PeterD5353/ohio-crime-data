@@ -10,7 +10,7 @@ With populations of mid-sized cities swelling due to housing affordability chall
 * [Google Cloud Storage](https://cloud.google.com/storage) - Data lake to hold raw data from API
 * [Google Dataproc](https://cloud.google.com/dataproc) - Used to run Apache Spark jobs
 * [Spark](https://spark.apache.org/) - Data processing and transformation
-* [Google BigQuery](https://cloud.google.com/bigquery) - Data warehouse to store processed data
+* [Google BigQuery](https://cloud.google.com/bigquery) - Data warehouse to store processed data. Data is partitioned by month to improve query performance when filtering by date. 
 * [Google Looker Studio](https://cloud.google.com/looker-studio) - Dashboard creation
 
 ## Project Architecture
